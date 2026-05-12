@@ -1,0 +1,185 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIoT Occupancy Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #38bdf8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #334155;
+            color: white;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #0ea5e9;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #0284c7;
+        }
+
+        .result {
+            margin-top: 20px;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .success {
+            color: #22c55e;
+        }
+
+        .danger {
+            color: #ef4444;
+        }
+
+        .warning {
+            color: #facc15;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>AIoT Occupancy Dashboard</h1>
+
+    <div class="card">
+        <h2>Nhập dữ liệu cảm biến</h2>
+
+        <div class="grid">
+            <div>
+                <label>Temperature</label>
+                <input type="number" id="temperature" value="21.93">
+            </div>
+
+            <div>
+                <label>Humidity</label>
+                <input type="number" id="humidity" value="28.786">
+            </div>
+
+            <div>
+                <label>Light</label>
+                <input type="number" id="light" value="469.53">
+            </div>
+
+            <div>
+                <label>CO2</label>
+                <input type="number" id="co2" value="834.85">
+            </div>
+
+            <div>
+                <label>Humidity Ratio</label>
+                <input type="number" id="humidityRatio" value="0.001824">
+            </div>
+        </div>
+
+        <button onclick="predictData()">Predict Occupancy</button>
+    </div>
+
+    <div class="card">
+        <h2>Kết quả AI</h2>
+
+        <div class="result" id="resultArea">
+            Chưa có dữ liệu.
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+async function predictData() {
+
+    const payload = {
+        room_id: "room_101",
+        device_id: "env_node_01",
+        timestamp: "2015-02-06 06:32:00",
+        Temperature: parseFloat(document.getElementById("temperature").value),
+        Humidity: parseFloat(document.getElementById("humidity").value),
+        Light: parseFloat(document.getElementById("light").value),
+        CO2: parseFloat(document.getElementById("co2").value),
+        HumidityRatio: parseFloat(document.getElementById("humidityRatio").value)
+    };
+
+    const response = await fetch('/predict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    const prob = data.model_output.occupancy_probability;
+    const occ = data.model_output.predicted_occupancy;
+    const anomaly = data.model_output.anomaly_score;
+    const isAnomaly = data.model_output.is_anomaly;
+
+    const decision = data.decision.decision;
+    const command = data.decision.command_hint;
+    const safety = data.decision.safety_note;
+
+    document.getElementById('resultArea').innerHTML = `
+        <p><b>Occupancy Probability:</b> ${prob}</p>
+        <p><b>Predicted Occupancy:</b> ${occ}</p>
+        <p><b>Anomaly Score:</b> ${anomaly}</p>
+        <p><b>Is Anomaly:</b> ${isAnomaly}</p>
+        <p><b>Decision:</b> ${decision}</p>
+        <p><b>Command Hint:</b> ${command}</p>
+        <p><b>Safety Note:</b> ${safety}</p>
+    `;
+}
+
+</script>
+
+</body>
+</html>
