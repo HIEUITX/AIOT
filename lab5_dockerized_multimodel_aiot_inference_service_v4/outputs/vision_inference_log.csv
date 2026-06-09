@@ -1,0 +1,2 @@
+timestamp_utc,endpoint,filename,content_type,status,top1_class,top1_confidence,inference_time_ms
+2026-06-09T01:36:55.983878+00:00,/classify-image,download.jpg,image/jpeg,ok,Chihuahua,0.996091,28.814
