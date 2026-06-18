@@ -1,0 +1,10 @@
+experiment_id,timestamp,image_id,threshold,num_detections,top_class,top_confidence,inference_time_ms,note
+exp_cf27c94248,2026-06-16T08:17:44,img_d0283fc19e,0.25,1,frisbee,0.3897,138.55,Compare how threshold changes number of detections.
+exp_cf27c94248,2026-06-16T08:17:44,img_dba5727988,0.5,0,,0,117.59,Compare how threshold changes number of detections.
+exp_cf27c94248,2026-06-16T08:17:44,img_d32a3f40ef,0.7,0,,0,107.47,Compare how threshold changes number of detections.
+exp_9d443c32dd,2026-06-16T08:17:49,img_302db13111,0.25,1,frisbee,0.3897,157.91,Compare how threshold changes number of detections.
+exp_9d443c32dd,2026-06-16T08:17:50,img_b0e36fe775,0.5,0,,0,176.15,Compare how threshold changes number of detections.
+exp_9d443c32dd,2026-06-16T08:17:50,img_2512ad6b2f,0.7,0,,0,154.51,Compare how threshold changes number of detections.
+exp_570fcc84fa,2026-06-16T08:19:15,img_eefc537519,0.25,1,frisbee,0.3897,200.27,Compare how threshold changes number of detections.
+exp_570fcc84fa,2026-06-16T08:19:15,img_8a044de086,0.5,1,frisbee,0.3897,268.43,Compare how threshold changes number of detections.
+exp_570fcc84fa,2026-06-16T08:19:16,img_d959a64699,0.7,1,frisbee,0.3897,255.05,Compare how threshold changes number of detections.

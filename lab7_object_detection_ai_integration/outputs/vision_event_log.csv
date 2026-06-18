@@ -1,0 +1,2 @@
+event_id,image_id,timestamp,event_type,severity,class_name,confidence,rule_used,explanation,action_hint,annotated_image_path
+evt_6eb7a8b0a9,img_551c969269,2026-06-15T09:16:36,OBJECT_DETECTED,NORMAL,visual_object,0.9376,generic_object_rule,At least one object was detected above the confidence threshold.,Display annotated image on dashboard; do not trigger actuator without a safety rule.,data/annotated_images/img_551c969269_detected.jpg

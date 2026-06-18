@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIoT Cyber Pose Dashboard - Toàn Màn Hình</title>
+  <style>
+    :root { 
+      --orange: #FF6B35; 
+      --green: #00E676;
+      --red: #FF3D00;
+      --glass: rgba(15, 23, 42, 0.75);
+    }
+    
+    * { box-sizing: border-box; }
+    
+    body, html { 
+      margin: 0; 
+      padding: 0; 
+      width: 100%; 
+      height: 100%; 
+      font-family: 'Segoe UI', Roboto, sans-serif; 
+      background: #090d16; 
+      overflow: hidden; 
+      color: #e2e8f0;
+    }
+
+    /* KHU VỰC CAMERA CHUYÊN DỤNG - PHỦ KÍN TOÀN MÀN HÌNH */
+    .fullscreen-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #020617;
+    }
+
+    .fullscreen-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Giúp ảnh camera kéo giãn căng khít màn hình máy tính */
+      display: none;
+    }
+
+    .no-feed-center {
+      color: #64748b;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+      animation: pulse 2s infinite;
+    }
+
+    /* KHUNG VIỀN CẢNH BÁO ĐỘNG (CHỚP MÀU KHI PHÁT HIỆN SỰ KIỆN) */
+    .alert-border {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 2;
+      pointer-events: none; /* Không che mất các nút bấm phía dưới */
+      border: 0px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .alert-active {
+      border: 10px solid var(--orange);
+      box-shadow: inset 0 0 50px rgba(255, 107, 53, 0.5);
+    }
+
+    /* GIAO DIỆN LỚP PHỦ HUD (HEADS-UP DISPLAY OVERLAY) */
+    .hud-layer {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 3;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 350px 1fr 380px;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      pointer-events: none; /* Để có thể click xuyên qua vùng trống */
+    }
+
+    .hud-layer * { pointer-events: auto; } /* Bật lại click cho các nút và bảng */
+
+    /* THANH BANNER TRÊN CÙNG */
+    header {
+      grid-column: 1 / -1;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 14px 24px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { margin: 0; font-size: 18px; letter-spacing: 1px; color: #fff; }
+    
+    /* PANEL ĐIỀU KHIỂN BÊN TRÁI */
+    .panel-left {
+      grid-column: 1;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* PANEL THÔNG TIN TỨC THỜI BÊN PHẢI */
+    .panel-right {
+      grid-column: 3;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    /* PHẦN LỊCH SỬ LOGS NẰM DƯỚI ĐÁY MÀN HÌNH */
+    .panel-bottom {
+      grid-column: 1 / -1;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+
+    h2 { font-size: 14px; margin: 0 0 10px 0; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; }
+    
+    .btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #1d4ed8; }
+    .btn-danger { background: #dc2626; }
+    .btn-danger:hover { background: #b91c1c; }
+    .btn-orange { background: var(--orange); color: #000; }
+    .btn-orange:hover { background: #e0531f; }
+
+    /* DANH SÁCH BẢNG BIỂU HIỂN THỊ DẠNG CYBERPUNK */
+    .metric-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .metric-val { font-weight: bold; color: var(--green); }
+    
+    table { width: 100%; border-collapse: collapse; font-size: 12px; color: #cbd5e1; }
+    th { text-align: left; padding: 6px; color: #94a3b8; background: rgba(255,255,255,0.05); }
+    td { padding: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fullscreen-bg">
+    <img id="videoFeed" alt="AIoT Fullscreen Stream" />
+    <div id="fallbackTxt" class="no-feed-center">📡 HỆ THỐNG GIÁM SÁT CHƯA KÍCH HOẠT<br><span style="font-size:12px; color:#475569;">Bấm nút khởi tạo ở thanh điều hướng trái</span></div>
+  </div>
+
+  <div id="alertFrame" class="alert-border"></div>
+
+  <div class="hud-layer">
+    
+    <header>
+      <h1>VISION ENGINE CORE V2 // LAB 7 EXPANDED</h1>
+      <div id="timeClock" style="font-family:monospace; color:var(--green);">00:00:00 REALTIME</div>
+    </header>
+
+    <div class="panel-left">
+      <h2>SENSORS CONTROLLER</h2>
+      <button class="btn" onclick="startCamera()">▶ KÍCH HOẠT CAMERA STREAM</button>
+      <button class="btn btn-danger" onclick="stopCamera()">■ NGẮT KẾT NỐI LUỒNG</button>
+      <button class="btn btn-orange" onclick="captureSnapshot()">📸 CHỤP SNAPSHOT CẮT CẢNH</button>
+      
+      <div style="margin-top:auto; font-size:11px; color:#64748b; line-height:1.4;">
+        * Chế độ rạp phim: Camera tự động co dãn chuẩn khớp kích thước mọi tỷ lệ màn hình (Responsive Cinema Mode).
+      </div>
+    </div>
+
+    <div class="panel-right">
+      <h2>AI DETECTION LOGIC</h2>
+      <div id="instantResult">
+        <div class="metric-row"><span>Trạng thái tư thế:</span><span class="metric-val" id="valPose" style="color:#fff;">STANDBY</span></div>
+        <div class="metric-row"><span>Góc lệch trục lưng:</span><span class="metric-val" id="valAngle">0.0 °</span></div>
+        <div class="metric-row"><span>Hành vi giơ tay:</span><span class="metric-val" id="valArm">NO</span></div>
+        <div class="metric-row"><span>Độ tin cậy AI:</span><span class="metric-val" id="valConf">0%</span></div>
+      </div>
+      
+      <h2 style="margin-top:20px;">SKELETON DATA REPL</h2>
+      <pre id="jsonViewer" style="background:rgba(0,0,0,0.4); padding:10px; border-radius:6px; font-size:11px; max-height:160px; overflow:auto; margin:0; border:1px solid rgba(255,255,255,0.05); font-family:monospace; color:#38bdf8;">{}</pre>
+    </div>
+
+    <div class="panel-bottom">
+      <div>
+        <h2>File: pose_log.csv (Báo cáo thực hành)</h2>
+        <div id="poseLogTable">Đang chờ tín hiệu dữ liệu...</div>
+      </div>
+      <div>
+        <h2>File: vision_event_log.csv (Nhật ký cảnh báo)</h2>
+        <div id="eventLogTable">Đang chờ tín hiệu dữ liệu...</div>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+// Đồng hồ góc HUD cập nhật thời gian
+setInterval(() => {
+  document.getElementById('timeClock').textContent = new Date().toLocaleTimeString() + " // SYSTEM ACTIVE";
+}, 1000);
+
+function startCamera() {
+  const feed = document.getElementById('videoFeed');
+  feed.src = `/video_feed?t=${Date.now()}`;
+  feed.style.display = 'block';
+  document.getElementById('fallbackTxt').style.display = 'none';
+}
+
+function stopCamera() {
+  const feed = document.getElementById('videoFeed');
+  feed.removeAttribute('src');
+  feed.style.display = 'none';
+  document.getElementById('fallbackTxt').style.display = 'block';
+  document.getElementById('alertFrame').classList.remove('alert-active');
+}
+
+async function captureSnapshot() {
+  const res = await fetch('/snapshot-detect');
+  const result = await res.json();
+  
+  document.getElementById('jsonViewer').textContent = JSON.stringify(result, null, 2);
+  
+  if(result.status === "success") {
+    const d = result.data;
+    
+    // Cập nhật các thẻ thông số HUD dạng số hóa
+    document.getElementById('valPose').textContent = d.pose_type;
+    document.getElementById('valAngle').textContent = d.tilt_angle + " °";
+    document.getElementById('valArm').textContent = d.arm_raised;
+    document.getElementById('valConf').textContent = (d.confidence * 100) + "%";
+
+    // Thay đổi màu sắc chữ và khung chớp viền nếu phát hiện có người Nghiêng / Giơ tay
+    const alertFrame = document.getElementById('alertFrame');
+    const poseBox = document.getElementById('valPose');
+    if (d.pose_type !== "NORMAL") {
+      alertFrame.classList.add('alert-active');
+      poseBox.style.color = "var(--orange)";
+    } else {
+      alertFrame.classList.remove('alert-active');
+      poseBox.style.color = "var(--green)";
+    }
+    
+    loadAllLogs();
+  }
+}
+
+async function loadAllLogs() {
+  try {
+    const pRes = await (await fetch('/pose-logs')).json();
+    let pHtml = '<table><tr><th>Time</th><th>Type</th><th>Angle</th><th>Arm</th></tr>';
+    pRes.items.slice(-4).reverse().forEach(i => {
+      pHtml += `<tr><td>${i.timestamp.split(' ')[1] || i.timestamp}</td><td><b style="color:var(--orange)">${i.pose_type}</b></td><td>${i.tilt_angle}°</td><td>${i.arm_raised}</td></tr>`;
+    });
+    document.getElementById('poseLogTable').innerHTML = pHtml + '</table>';
+
+    const eRes = await (await fetch('/vision-events')).json();
+    let eHtml = '<table><tr><th>Time</th><th>Event</th><th>Severity</th></tr>';
+    eRes.items.slice(-4).reverse().forEach(i => {
+      eHtml += `<tr><td>${i.timestamp.split(' ')[1] || i.timestamp}</td><td>${i.event_type}</td><td><span style="color:var(--red)">${i.severity}</span></td></tr>`;
+    });
+    document.getElementById('eventLogTable').innerHTML = eHtml + '</table>';
+  } catch(e) {
+    console.log("Chưa kích hoạt hoặc thiếu dữ liệu log.");
+  }
+}
+
+// Gọi tải trước dữ liệu log trống khi tải trang
+loadAllLogs();
+</script>
+</body>
+</html>
