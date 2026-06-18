@@ -1,0 +1,59 @@
+event_id,image_id,timestamp,event_type,score,severity,explanation,action_hint
+evt_c04e39d2e4,img_2d74745232,2026-06-09T07:36:26,IMAGE_PROCESSED,233.55,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_b10eaf016d,img_e35d0bf94d,2026-06-09T07:36:26,IMAGE_PROCESSED,233.55,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_7eb5db1e9e,vid_57a5cb6ca5,2026-06-09T07:36:28,VIDEO_RECORDED,10,NORMAL,Recorded a short video clip with 10 frames.,Use the video clip for later review or image analysis.
+evt_e566869fba,img_494650f8dd,2026-06-09T07:36:29,IMAGE_PROCESSED,233.55,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_68a81b101c,img_494650f8dd,2026-06-09T07:36:29,MOTION_DETECTED,1162.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_9dad952740,img_c5ed84ff29,2026-06-10T07:54:05,IMAGE_PROCESSED,233.51,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_e755bab653,img_095581d85e,2026-06-10T07:54:05,IMAGE_PROCESSED,233.51,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_c614dbc8d0,vid_a4b974fed5,2026-06-10T07:54:06,VIDEO_RECORDED,10,NORMAL,Recorded a short video clip with 10 frames.,Use the video clip for later review or image analysis.
+evt_635594ec04,img_2e4bff2c9d,2026-06-10T07:54:07,IMAGE_PROCESSED,233.51,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_2077b0ae75,img_2e4bff2c9d,2026-06-10T07:54:07,MOTION_DETECTED,1162.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_8099353766,img_a1df7ec440,2026-06-10T07:56:30,IMAGE_PROCESSED,144.42,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_a975f58d79,img_093bbc7b4a,2026-06-10T07:57:04,IMAGE_PROCESSED,144.42,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_0362e36893,img_3180565846,2026-06-10T08:12:12,IMAGE_PROCESSED,233.51,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_28665b74b3,img_3180565846,2026-06-10T08:12:13,MOTION_DETECTED,71791.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_fef2384c46,img_2ac34ce56e,2026-06-10T08:12:21,IMAGE_PROCESSED,137.91,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_5b60abfd3b,img_2ac34ce56e,2026-06-10T08:12:21,MOTION_DETECTED,3753.5,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_9bf8550d45,img_cd0d308c13,2026-06-10T08:12:30,IMAGE_PROCESSED,138.24,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_326ee44ed6,img_cd0d308c13,2026-06-10T08:12:30,NO_SIGNIFICANT_MOTION,478.5,NORMAL,No significant frame difference was detected.,Continue visual monitoring.
+evt_f4ac78ed3c,img_5991d6191b,2026-06-10T09:30:12,IMAGE_PROCESSED,233.51,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_c0184be62f,img_895f7e3529,2026-06-10T09:30:12,IMAGE_PROCESSED,233.51,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_1b75d8e9e6,vid_4928b03127,2026-06-10T09:30:14,VIDEO_RECORDED,10,NORMAL,Recorded a short video clip with 10 frames.,Use the video clip for later review or image analysis.
+evt_976db9a98f,img_cb16c0c213,2026-06-10T09:30:15,IMAGE_PROCESSED,233.51,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_b6d9a9417e,img_cb16c0c213,2026-06-10T09:30:15,MOTION_DETECTED,1162.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_1b720b50d0,img_7ccbde45a3,2026-06-10T09:30:29,IMAGE_PROCESSED,233.51,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_8d574ae06e,img_ed5a5d0f6f,2026-06-10T09:31:50,IMAGE_PROCESSED,146.64,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_af1d94f3ca,img_ed5a5d0f6f,2026-06-10T09:31:50,MOTION_DETECTED,2645.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_28e8642948,img_2f649786d4,2026-06-10T09:31:59,IMAGE_PROCESSED,138.64,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_001321d8b5,img_2f649786d4,2026-06-10T09:31:59,MOTION_DETECTED,6771.5,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_554bf83af9,img_164eb9b91c,2026-06-10T09:32:08,IMAGE_PROCESSED,139.95,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_d828eacbb8,img_164eb9b91c,2026-06-10T09:32:08,MOTION_DETECTED,1688.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_ff675d2271,img_2c61c2782f,2026-06-10T09:33:09,IMAGE_PROCESSED,148.07,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_560aabf6c7,img_2c61c2782f,2026-06-10T09:33:09,MOTION_DETECTED,983.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_0a39cc1047,img_d42cd37e33,2026-06-10T09:33:17,IMAGE_PROCESSED,233.51,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_281971b2b3,img_d42cd37e33,2026-06-10T09:33:17,MOTION_DETECTED,11104.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_870ffcee33,img_cb305b2b7f,2026-06-10T09:33:26,IMAGE_PROCESSED,141.84,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_c924b8477c,img_cb305b2b7f,2026-06-10T09:33:26,MOTION_DETECTED,1199.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_bf6ddd241a,img_96c9b3b875,2026-06-10T09:36:54,IMAGE_PROCESSED,135.73,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_90e228f702,img_96c9b3b875,2026-06-10T09:36:54,MOTION_DETECTED,4846.5,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_d09def5b0e,img_24656d2301,2026-06-10T09:37:03,IMAGE_PROCESSED,142.98,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_51d7930238,img_24656d2301,2026-06-10T09:37:03,MOTION_DETECTED,6546.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_1035001bb3,img_86190e4f27,2026-06-10T09:37:11,IMAGE_PROCESSED,127.54,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_2c25525a2e,img_86190e4f27,2026-06-10T09:37:12,MOTION_DETECTED,7695.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_a0a953767c,img_41974d4be8,2026-06-10T09:37:20,IMAGE_PROCESSED,142.83,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_25ec7f5be7,img_41974d4be8,2026-06-10T09:37:20,MOTION_DETECTED,7759.5,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_bf1cc17fdd,img_ea67cabed9,2026-06-10T09:37:59,IMAGE_PROCESSED,134.42,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_aa0cc2d40c,img_ea67cabed9,2026-06-10T09:37:59,MOTION_DETECTED,1495.5,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_9ef029bdfe,img_4b83f17e8a,2026-06-10T09:43:14,IMAGE_PROCESSED,130.55,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_72de4c4e61,img_4b83f17e8a,2026-06-10T09:43:14,MOTION_DETECTED,3177.5,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_1c8d763bfc,img_94298b8511,2026-06-10T09:43:23,IMAGE_PROCESSED,139.4,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_952973b47d,img_94298b8511,2026-06-10T09:43:23,MOTION_DETECTED,5193.0,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_f02f8b5203,img_2bec6d1365,2026-06-10T09:43:31,IMAGE_PROCESSED,132.46,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_37ab5912a1,img_2bec6d1365,2026-06-10T09:43:31,MOTION_DETECTED,2568.5,WARNING,Frame difference exceeded threshold.,Review captured image and keep the event in the dashboard.
+evt_107771950b,img_955ac6a5b4,2026-06-10T10:36:21,IMAGE_PROCESSED,140.58,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_0a7ff7562d,img_955ac6a5b4,2026-06-10T10:36:22,PERSON_DETECTED,1018.0,CRITICAL,Motion detected and MediaPipe found a human body.,Show alarm on dashboard.
+evt_2b7d53a1c9,img_48685e268e,2026-06-10T10:36:40,IMAGE_PROCESSED,234.99,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_1396dab92a,img_48685e268e,2026-06-10T10:36:40,MOTION_ONLY,72052.0,NORMAL,Movement detected but no person found.,Ignore.
+evt_45832231fb,img_f6d4b9b0ae,2026-06-10T10:36:47,IMAGE_PROCESSED,141.71,NORMAL,"Image was received, saved, preprocessed, and registered as visual data.",Continue monitoring or pass the image to Lab 7 object detection.
+evt_7de8d9b1b0,img_f6d4b9b0ae,2026-06-10T10:36:47,PERSON_DETECTED,2245.0,CRITICAL,Motion detected and MediaPipe found a human body.,Show alarm on dashboard.
