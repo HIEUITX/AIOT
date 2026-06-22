@@ -1,0 +1,3 @@
+timestamp,scenario_id,mode,sensor_risk,ai_risk,llm_risk
+2026-06-16T15:56:31.552352+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-16T15:56:31.556135+00:00,fire_alarm_conflict,mock,LOW,LOW,MEDIUM

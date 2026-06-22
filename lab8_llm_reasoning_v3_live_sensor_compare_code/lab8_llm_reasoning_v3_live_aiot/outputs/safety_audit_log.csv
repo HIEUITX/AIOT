@@ -1,0 +1,4 @@
+timestamp,context_id,scenario_id,risk_level,control_allowed,need_human_review,blocked_reason
+2026-06-16T15:56:31.551722+00:00,c7602a4e-008e-4970-b7d2-24f3d6b13df8,lab_overcrowded_high_co2,HIGH,False,True,"Lab mode blocks direct actuator control. LLM output is decision support, not final actuator command."
+2026-06-16T15:56:31.555814+00:00,ff67e5fe-9226-4708-b3de-d5ec1c656dab,fire_alarm_conflict,MEDIUM,False,True,"Lab mode blocks direct actuator control. LLM output is decision support, not final actuator command. Human review required: flame_vision_confidence < 0.6."
+2026-06-16T15:56:31.562164+00:00,ed4cc41c-0a87-4d85-949e-567a03784aaf,fire_alarm_conflict,MEDIUM,False,True,"Lab mode blocks direct actuator control. LLM output is decision support, not final actuator command. Human review required: flame_vision_confidence < 0.6."
